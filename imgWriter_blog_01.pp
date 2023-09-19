@@ -1,4 +1,4 @@
-**OPENCV 4学习工程 01**
+/* OPENCV 4学习工程 01 */
 
 #include <iostream>
 #include <opencv2\opencv.hpp>
