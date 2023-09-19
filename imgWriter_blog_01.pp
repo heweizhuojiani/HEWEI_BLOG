@@ -15,13 +15,13 @@ void AlphaMat(Mat &mat)
 			{
 				Vec4b& bgra = mat.at<Vec4b>(i, j);
 				bgra[0] = UCHAR_MAX;  // 蓝色通道
-				bgra[1] = saturate_cast<uchar>((float(mat.cols - j)) / ((float)mat.cols) * UCHAR_MAX);  // 绿色通道
-				bgra[2] = saturate_cast<uchar>((float(mat.rows - i)) / ((float)mat.rows) * UCHAR_MAX);  // 红色通道
+				bgra[1] = saturate_cast<uchar>((float(mat.cols - j)) / ((float)mat.cols) \* UCHAR_MAX);  // 绿色通道
+				bgra[2] = saturate_cast<uchar>((float(mat.rows - i)) / ((float)mat.rows) \* UCHAR_MAX);  // 红色通道
 				bgra[3] = saturate_cast<uchar>(0.5 * (bgra[1] + bgra[2]));  // Alpha通道
 			}
 		}
 }
-int main(int agrc, char** agrv)
+int main(int agrc, char\*\* agrv)
 {
 	// Create mat with alpha channel
 	Mat mat(480, 640, CV_8UC4);
