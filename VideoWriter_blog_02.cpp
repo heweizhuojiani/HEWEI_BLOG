@@ -1,4 +1,4 @@
-/** TIPS: VideoWriter 函数 与 VideoCapture 函数有很大的相似之处，都可以通过 isOpened() 函数判断是否成功创建一个视频流。可以通过 get() 
+	/** TIPS: VideoWriter 函数 与 VideoCapture 函数有很大的相似之处，都可以通过 isOpened() 函数判断是否成功创建一个视频流。可以通过 get() 
         查看视频流中的各属性。 在保存视频时，我们只需要将生成视频的图像一帧一帧地通过 << 操作符（或者write()函数）赋值给视频流。最后使用 release() 关闭视频流。。**/
 
 #include <opencv2\opencv.hpp>
@@ -71,7 +71,7 @@ int main()
 	// 退出程序时刻自动关闭视频流
 	//video.release();
 	//writer.release();
-
+	/** TIPS: 此处可以不手动调用release()函数进行释放，程序运行结束时会自动调用析构函数进行释放。**/
 	
 	return 0;
 }
