@@ -23,9 +23,11 @@ void AlphaMat(Mat &mat)
    			/** TIPS: 这两行代码是在处理图像的绿色和红色通道，根据像素的位置来计算并设置通道的值。 saturate_cast<uchar>是OPENCV 4中一个函数，用于防止数据超出指定数据类型范围，防止溢出。 **/
 			/** TIPS: 这两行代码根据像素的位置在图像中计算并设置了绿色通道和红色通道的值。这种方式可以根据像素的位置来调整颜色通道的亮度，从而实现特定的颜色效果。这在图像处理和计算机视觉中常常用于创建视觉效果和图像处理。**/
    			bgra[3] = saturate_cast<uchar>(0.5 * (bgra[1] + bgra[2]));  // Alpha通道
+      			/** TIPS: 这行代码的目的可能是根据绿色通道和红色通道的值的平均值来确定像素的透明度，从而创建半透明的效果。具体效果取决于图像中的颜色通道值以及缩放因子。**/
 		}
 	}
 }
+
 int main(int agrc, char** agrv)
 {
 	// Create mat with alpha channel
@@ -36,6 +38,7 @@ int main(int agrc, char** agrv)
 	compression_params.push_back(IMWRITE_PNG_COMPRESSION);  //PNG格式图像压缩标志
 	compression_params.push_back(9);  //设置最高压缩质量		
 	bool result = imwrite("alpha.png", mat, compression_params);
+ 	/** TIPS: OPENCV提供了imwrite接口，用于将矩阵数据保存为图像文件 **/
 	if (!result)
 	{
 		cout << "保存成PNG格式图像失败" << endl;
