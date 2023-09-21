@@ -1,3 +1,6 @@
+/** TIPS: VideoWriter 函数 与 VideoCapture 函数有很大的相似之处，都可以通过 isOpened() 函数判断是否成功创建一个视频流。可以通过 get() 
+        查看视频流中的各属性。 在保存视频时，我们只需要将生成视频的图像一帧一帧地通过 << 操作符（或者write()函数）赋值给视频流。最后使用 release() 关闭视频流。。**/
+
 #include <opencv2\opencv.hpp>
 #include <iostream>
 
@@ -7,11 +10,12 @@ using namespace std;
 int main()
 {
 	Mat img;
+	/** TIPS: 法一，通过摄像头生成新的视频文件。**/
 	VideoCapture video(0);  //使用某个摄像头
-  /** TIPS: 这句代码创建了一个名为 video 的 VideoCapture 对象。VideoCapture 是OpenCV库中用于捕获视频流的类。**/
-  /** TIPS: 在这里，VideoCapture 的构造函数接受一个参数，该参数指定要捕获的视频源。在这个例子中，参数是0，表示使用默认的摄像头作为视频源. **/
+  	/** TIPS: 这句代码创建了一个名为 video 的 VideoCapture 对象。VideoCapture 是OpenCV库中用于捕获视频流的类。**/
+  	/** TIPS: 在这里，VideoCapture 的构造函数接受一个参数，该参数指定要捕获的视频源。在这个例子中，参数是0，表示使用默认的摄像头作为视频源. **/
 
-	//读取视频
+	/** TIPS: 在这里，读取已有的视频文件。**/
 	//VideoCapture video;
 	//video.open("cup.mp4");  
 
@@ -22,6 +26,7 @@ int main()
 	}
 
 	video >> img;  //获取图像
+	/** TIPS：获取一帧图像并存放到Mat对象img中，这是VideoCature类进行视频捕捉的一种常用方式。 **/
 	//检测是否成功获取图像
 	if (img.empty())   //判断有没有读取图像成功
 	{
@@ -29,6 +34,7 @@ int main()
 		return -1;
 	}
 	bool isColor = (img.type() == CV_8UC3);  //判断相机（视频）类型是否为彩色
+	
 
 	VideoWriter writer;
 	int codec = VideoWriter::fourcc('M', 'J', 'P', 'G');  // 选择编码格式
@@ -64,6 +70,8 @@ int main()
 	}
 	// 退出程序时刻自动关闭视频流
 	//video.release();
-	//writer.release();	
+	//writer.release();
+
+	
 	return 0;
 }
