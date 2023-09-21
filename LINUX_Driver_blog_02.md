@@ -15,7 +15,7 @@
     分配设备号包括动态分配和静态分配。
     涉及到的函数按下不表，值得注意的是不能在设备使用时释放设备号。
     设备还涉及到权限问题（尤其是通过脚本的方式进行创建）：当使用脚本创建设备文件时候，脚本通常由root用户允许，则创建的设备文件所属的用户自然是root。默认的权限只有root对其有写访问权，而其他用户只有读权限，例如脚本：
-'''shell
+```shell
 module="scull"
 device="scull"
 mode="664"
@@ -67,4 +67,4 @@ mknod /dev/${device}priv  c $major 11
 chgrp $group /dev/${device}priv
 chmod $mode  /dev/${device}priv
 
-'''
+```
